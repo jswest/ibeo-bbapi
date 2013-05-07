@@ -6,7 +6,7 @@
 
 To hit your api: `/your-wordpress-project/?bb=true&type=posts&number=5&offset=0&exclude=4` (for example).
 
-### Currently accepted parameters (as of version 0.2.2)
+### Currently accepted parameters (as of version 0.3.1)
 - `bb`: boolean, required. Lets wordpress know that this is a request for the Backbone API.
 - `type`: string, required. Currently accepted types are...
   1. `post`: will pull a single post from the database, by id.
