@@ -54,12 +54,29 @@ class BackboneResponse {
       }
       $this->response = $results;
     
+    // Get a group of posts by category.
     } elseif( $this->type == 'category' ) {
       $options = array(
         'numberposts' => $this->number,
         'offset' => $this->offset,
         'exclude' => $this->exclude,
         'category' => $this->id
+      );
+      $posts = get_posts( $options );
+      $results = array();
+      foreach( $posts as $post ) {
+        $result = $this->get_post_data( $post );
+        array_push( $results, $result );
+      }
+      $this->response = $results;
+
+    // Get a group of posts by tag.
+    } elseif( $this->type == 'tag' ) {
+      $options = array(
+        'numberposts' => $this->number,
+        'offset' => $this->offset,
+        'exclude' => $this->exclude,
+        'tag_id' => $this->id
       );
       $posts = get_posts( $options );
       $results = array();
