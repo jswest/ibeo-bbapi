@@ -14,7 +14,9 @@ To hit your api: `/your-wordpress-project/?bb=true&type=posts&number=5&offset=0&
   3. `category`: will pull any number of posts from the database, by category id.
   4. `tag`: will pull any number fo posts from the database, by tag id.
   5. `categories`: will pull a list of all categories from the database.
-- `id`: int, required for `type=post` and `type=category`. It has no effect on `type=categories` or `type=posts`. Determines either which post to pull from the database or which category's posts to pull from the database.
+  6. `lookup`: will pull information about a specific taxonomy (that is, tag or category)
+- `lookup_type`: string, required for `type=lookup`. The only respected values are `category` and `tag`, which is an alias for `post_tag`.
+- `id`: int, required for `type=post`, `type=category`, `type=lookup`. It has no effect on `type=categories` or `type=posts`. Determines either which post to pull from the database or which category's posts to pull from the database.
 - `number`: int, not required. Sets how many posts to pull when `type=categories` or `type=posts`.
 - `offset`: int, not required. Sets the offset when `type=categories` or `type=posts`.
 - `exclude`: int, not required. As of now, you can only exclude _one_ post from `type=categories` or `type-posts` requests. This will change.

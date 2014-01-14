@@ -3,7 +3,7 @@
 Plugin Name: Backbone API
 Plugin URL:
 Description: A stripped-down, RESTful API for WordPress, based on the JSON API plugin
-Version: 0.3.1
+Version: 0.3.2
 Author: John West
 Author URI: http://oberliner.net/
 */

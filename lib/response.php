@@ -2,9 +2,10 @@
 
 class BackboneResponse {
   
-  function __construct( $type, $id, $number, $offset, $exclude, $slug ) {
+  function __construct( $type, $lookup_type, $id, $number, $offset, $exclude, $slug ) {
     $this->id = $id;
     $this->type = $type;
+    $this->lookup_type = $lookup_type;
     $this->number = $number;
     $this->offset = $offset;
     $this->exclude = $exclude;
@@ -104,6 +105,16 @@ class BackboneResponse {
       );
       $dates = wp_get_archives( $options );
       $this->response = $dates;
+
+    } elseif( $this->type == 'lookup' ) {
+      $value = $this->id;
+      if ( $this->lookup_type == 'tag' ) {
+        $type = 'post_tag';
+      } else {
+        $type = $this->lookup_type;
+      }
+      $field = "id";
+      $this->response = get_term_by( $field, $value, $type );
 
     // If the request sucks. 
     } else {
